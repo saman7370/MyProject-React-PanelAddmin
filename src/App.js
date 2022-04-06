@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Content from './content';
 import Sidebar from './sidebar';
 
 
@@ -7,6 +7,7 @@ const App = ()=>{
     return(
         <>
         <Sidebar/>
+        <Content/>
         </>
 
     )

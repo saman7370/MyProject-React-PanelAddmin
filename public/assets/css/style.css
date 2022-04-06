@@ -14,15 +14,21 @@ body{
     font-family: BYekan;
     width: 100%;
     height: 100%;
-    background: rgb(12, 204, 188);}
+    background: rgb(12, 204, 188);
+    position: relative;
+    display: flex;}
+
+/* sidebar */
 
 .main-sidebar{
     width: 15%;
     height: 100vh;
-    background: url(../images/sideBack3.jpg);
+    background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)) ,url(../images/sideBack3.jpg);
     background-size: cover;
     box-shadow: 2px 2px 100px rgba(14, 13, 13, 0.2);
-    position: relative;}
+    position: fixed;
+    right: 0;
+    top: 0;}
 
 .ul-sidebar{
     width: 100%;
@@ -69,6 +75,23 @@ body{
     width: 100%;
     height: 100%;
     border-radius: 5px;}
+
+/* content */
+
+.main-content{
+    width: 85%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1)) ,url("../images/body_back7.jpg");}
+
+td , th {
+    text-align: center !important;}    
 
     
 
