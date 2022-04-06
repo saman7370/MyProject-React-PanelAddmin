@@ -37,7 +37,8 @@ body{
     padding: 70px 0;
     flex-direction: column;
     justify-content:start;
-    align-items: center;}
+    align-items: center;
+    list-style: none;}
 
 .ul-sidebar .first-li-sidebar{
     width: 100px;
@@ -53,6 +54,13 @@ body{
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;}
+
+.ul-sidebar a{
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: start;}
 
 .ul-sidebar .li{
     width: 100%;
@@ -91,7 +99,9 @@ body{
     background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1)) ,url("../images/body_back7.jpg");}
 
 td , th {
-    text-align: center !important;}    
+    text-align: center !important;}
+    
+
 
     
 
