@@ -22,3 +22,17 @@
         bottom: 20%;
         border-radius: 5px;}
     }
+
+@media screen and (max-width:992px){
+    .main-sidebar{
+        width: 20%;
+        right: -25%;
+        z-index: 999;
+        transition: all .3s ease-in-out;}
+
+    .main-content{
+        width: 100%;}
+
+    .icon-bar{
+        display: block;}
+}
