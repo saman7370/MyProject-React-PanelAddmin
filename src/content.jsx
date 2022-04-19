@@ -11,6 +11,7 @@ import User from "./users/user";
 import Comment from './posts/Comment';
 
 
+
 const Content = ()=>{
 
     const{showMenu , setShowMenu} = useContext(MainContext);
@@ -32,7 +33,8 @@ const Content = ()=>{
                 <Route path='/posts/add' element={<AddPost/>}>
                     <Route path=':postId'/>
                 </Route>
-                <Route path='/posts/:postId/comments' element={<Comment/>}/>
+                <Route path='/posts/1/comments' element={<Comment/>}>
+                </Route>
                 <Route path='/gallerys' element={<Gallery/>}/>
                 <Route path='/todos' element={ <Todo/>}/>
                 <Route path='*' element={ <User/>}/>

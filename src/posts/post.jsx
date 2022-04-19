@@ -91,7 +91,7 @@ const Post = ()=>{
                                <td>
                                    <i className="fas fa-edit text-warning mx-2 pointer" onClick={()=>{navigate(`/posts/add/${u.id}`)}}></i>
                                    <a href="#"><i className="fas fa-trash text-danger mx-2 pointer" onClick={()=>handleDelet(u.id)}></i></a>
-                                   <a href="#"><i className="far fa-comment-alt text-danger mx-2 pointer" onClick={()=>{navigate(`/posts/${u.id}/comments`)}}></i></a>
+                                   <a href="#"><i className="far fa-comment-alt text-danger mx-2 pointer" onClick={()=>{navigate(`/posts/1/comments`)}}></i></a>
                                </td>
                            </tr>
                       ))}

@@ -6,12 +6,13 @@ import { useState } from 'react';
 
 
 const Comment = ()=>{
+
     const navigate = useNavigate();
     const[comments , setComments] = useState([]);
     const[mainComments, setMainComments] = useState([]);
 
-    useEffect((postId) => {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`).then(res=>{
+    useEffect(() => {
+        axios.get('https://jsonplaceholder.typicode.com/posts/1/comments').then(res=>{
             setComments(res.data);
             setMainComments(res.data);
         }).catch(err=>{
@@ -29,7 +30,7 @@ const Comment = ()=>{
           })
           .then((willDelete) => {
             if (willDelete) {
-                axios.delete(`https://jsonplaceholder.typicode.com/posts/${itemId}/comments`).then(res =>{
+                axios.delete(`https://jsonplaceholder.typicode.com/posts/1/comments/${itemId}`).then(res =>{
                     if(res.status === 200){
                         const newComments = comments.filter(u => u.id != itemId);
                         setComments(newComments);
@@ -62,11 +63,11 @@ const Comment = ()=>{
                     <input type="text" className="form-control shadow" placeholder="جستجو" onChange={handleSearchComments}/>
                 </div>
                 <div className="col-2 text-start px-0">
-                    <Link to="/posts/comments/Add">
+                    {/* <Link to="/posts/1/comments/Add">
                     <button className="btn btn-success">
                         <i className="fas fa-plus text-light"></i>
                     </button>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
             {comments.length ? (
@@ -78,7 +79,7 @@ const Comment = ()=>{
                           <th>نام کاربر</th>
                           <th>ایمیل</th>
                           <th>متن</th>
-                          <th>عملیات</th>
+                          {/* <th>عملیات</th> */}
                       </tr>
                   </thead>
                   <tbody>
@@ -89,10 +90,10 @@ const Comment = ()=>{
                                <td>{u.name}</td>
                                <td>{u.email}</td>
                                <td>{u.body}</td>
-                               <td>
-                                   <i className="fas fa-edit text-warning mx-2 pointer" onClick={()=>{navigate(`/comments/add/${u.id}`)}}></i>
+                               {/* <td>
+                                   <i className="fas fa-edit text-warning mx-2 pointer" onClick={()=>{navigate(`/posts/1/comments/add/${u.id}`)}}></i>
                                    <a href="#"><i className="fas fa-trash text-danger mx-2 pointer" onClick={()=>handleDelet(u.id)}></i></a>
-                               </td>
+                               </td> */}
                            </tr>
                       ))}
                   </tbody>
