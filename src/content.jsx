@@ -3,10 +3,12 @@ import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { MainContext } from './contexts/mainContext';
 import Gallery from "./gallery/gallery";
+import AddPost from './posts/AddPost';
 import Post from "./posts/post";
 import Todo from "./todos/todo";
 import Adduser from './users/adduser';
 import User from "./users/user";
+import Comment from './posts/Comment';
 
 
 const Content = ()=>{
@@ -27,6 +29,10 @@ const Content = ()=>{
                     <Route path=':Userid'/>
                 </Route>
                 <Route path='/posts' element={ <Post/>}/>
+                <Route path='/posts/add' element={<AddPost/>}>
+                    <Route path=':postId'/>
+                </Route>
+                <Route path='/posts/:postId/comments' element={<Comment/>}/>
                 <Route path='/gallerys' element={<Gallery/>}/>
                 <Route path='/todos' element={ <Todo/>}/>
                 <Route path='*' element={ <User/>}/>

@@ -14,7 +14,7 @@ body{
     font-family: BYekan;
     width: 100%;
     height: 100%;
-    background: rgb(12, 204, 188);
+    background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1)) ,url("../images/body_back7.jpg");
     position: relative;
     display: flex;}
 
@@ -45,7 +45,7 @@ body{
     height: 100px;
     margin: 10px 0 40px 0;
     border-radius: 50%;
-    background-color: red;
+    /* background-color: red; */
     border: 1px solid rgb(241, 240, 240);}
 
 .ul-sidebar .first-li-sidebar img{
@@ -69,6 +69,9 @@ body{
     padding: 10px 15px;
     cursor: pointer;}
 
+.ul-sidebar .li:hover{
+    background-color: rgba(153, 153, 153 , .5);}
+
 .ul-sidebar .footer-li{
     width: 120px;
     height: 120px;
@@ -85,15 +88,14 @@ body{
 
 .main-content{
     width: 85%;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     left: 0;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: start;
-    flex-direction: column;
-    background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1)) ,url("../images/body_back7.jpg");}
+    flex-direction: column;}
 
 td , th {
     text-align: center !important;}

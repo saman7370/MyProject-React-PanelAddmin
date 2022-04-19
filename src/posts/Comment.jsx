@@ -5,16 +5,15 @@ import axios from 'axios';
 import { useState } from 'react';
 
 
-const Post = ()=>{
-
+const Comment = ()=>{
     const navigate = useNavigate();
-    const[posts , setPosts] = useState([]);
-    const[mainPosts, setMainPosts] = useState([]);
+    const[comments , setComments] = useState([]);
+    const[mainComments, setMainComments] = useState([]);
 
-    useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/posts').then(res=>{
-            setPosts(res.data);
-            setMainPosts(res.data);
+    useEffect((postId) => {
+        axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`).then(res=>{
+            setComments(res.data);
+            setMainComments(res.data);
         }).catch(err=>{
             console.log(err);
         })  
@@ -30,10 +29,10 @@ const Post = ()=>{
           })
           .then((willDelete) => {
             if (willDelete) {
-                axios.delete(`https://jsonplaceholder.typicode.com/posts/${itemId}`).then(res =>{
+                axios.delete(`https://jsonplaceholder.typicode.com/posts/${itemId}/comments`).then(res =>{
                     if(res.status === 200){
-                        const newPosts = posts.filter(u => u.id != itemId);
-                        setPosts(newPosts);
+                        const newComments = comments.filter(u => u.id != itemId);
+                        setComments(newComments);
                         swal("حذف با موفقیت انجام شد", {
                             icon: "success",
                             buttons:"متوجه شدم"
@@ -51,47 +50,48 @@ const Post = ()=>{
           });
     }
 
-    const handleSearchPosts = (e)=>{
-        setPosts(mainPosts.filter(u => u.title.includes(e.target.value)));
+    const handleSearchComments = (e)=>{
+        setComments(mainComments.filter(u => u.email.includes(e.target.value)));
     }
 
     return(
         <div className="mt-5 p-4 container-fluid">
-            <h4 className="text-center">مدیریت پست ها</h4>
+            <h4 className="text-center">مدیریت کامنت ها</h4>
             <div className="row my-2 mb-4 justify-content-between w-100 mx-0">
                 <div className="form-group col-10 col-md-6 col-lg-4">
-                    <input type="text" className="form-control shadow" placeholder="جستجو" onChange={handleSearchPosts}/>
+                    <input type="text" className="form-control shadow" placeholder="جستجو" onChange={handleSearchComments}/>
                 </div>
                 <div className="col-2 text-start px-0">
-                    <Link to="/posts/Add">
+                    <Link to="/posts/comments/Add">
                     <button className="btn btn-success">
                         <i className="fas fa-plus text-light"></i>
                     </button>
                     </Link>
                 </div>
             </div>
-            {posts.length ? (
+            {comments.length ? (
                   <table className="table bg-light shadow">
                   <thead>
                       <tr>
                           <th>#</th>
                           <th>آیدی کاربر</th>
-                          <th>عنوان</th>
+                          <th>نام کاربر</th>
+                          <th>ایمیل</th>
                           <th>متن</th>
                           <th>عملیات</th>
                       </tr>
                   </thead>
                   <tbody>
-                      {posts.map(u => (
+                      {comments.map(u => (
                             <tr key={u.id}>
-                               <td>{u.userId}</td>
+                               <td>{u.postId}</td>
                                <td>{u.id}</td>
-                               <td>{u.title}</td>
+                               <td>{u.name}</td>
+                               <td>{u.email}</td>
                                <td>{u.body}</td>
                                <td>
-                                   <i className="fas fa-edit text-warning mx-2 pointer" onClick={()=>{navigate(`/posts/add/${u.id}`)}}></i>
+                                   <i className="fas fa-edit text-warning mx-2 pointer" onClick={()=>{navigate(`/comments/add/${u.id}`)}}></i>
                                    <a href="#"><i className="fas fa-trash text-danger mx-2 pointer" onClick={()=>handleDelet(u.id)}></i></a>
-                                   <a href="#"><i className="far fa-comment-alt text-danger mx-2 pointer" onClick={()=>{navigate(`/posts/${u.id}/comments`)}}></i></a>
                                </td>
                            </tr>
                       ))}
@@ -108,4 +108,4 @@ const Post = ()=>{
     )
 }
 
-export default Post;
+export default Comment;
